@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+WARNING: This does not (yet) build the Lambda Calculus module. Before building a complete distribution, adapt the script accordingly.
+-->
+
+<project name="j-Algo" default="dist" basedir=".">
+
+	<property name="VERSION_ID" value="20081105" />
+
+  <property name="classpath" value=" ../extlibs/jh.jar ../extlibs/swing-layout-1.0.jar ../runtime/modules/avl.jar ../runtime/modules/dijkstra.jar ../runtime/modules/ebnf.jar ../runtime/modules/heapsort.jar ../runtime/modules/hoare.jar ../runtime/modules/kmp.jar  ../runtime/modules/pulsemem.jar ../runtime/modules/app.jar" />
+	<property name="module_classpath" value="../j-Algo.jar" />
+
+	<property name="dist" location="dist" />
+
+	<property name="bin" location="bin" />
+	<property name="res" location="res" />
+
+	<target name="dist" depends="dist_base,linux,macosx,windows">
+		<delete dir="${dist}/tmp" />
+	</target>
+
+	<target name="init">
+		<mkdir dir="${dist}/tmp" />
+	</target>
+
+	<target name="dist_base" depends="main, parser">
+		<antcall target="module_jar">
+			<param name="modulename" value="avl" />
+			<param name="classpath" value="${module_classpath}" />
+		</antcall>
+		<antcall target="module_pkg">
+			<param name="modulename" value="avl" />
+		</antcall>
+
+		<antcall target="module_jar">
+			<param name="modulename" value="dijkstra" />
+			<param name="classpath" value="${module_classpath}" />
+		</antcall>
+		<antcall target="module_pkg">
+			<param name="modulename" value="dijkstra" />
+		</antcall>
+
+		<antcall target="module_jar">
+			<param name="modulename" value="ebnf" />
+			<param name="classpath" value="${module_classpath}" />
+		</antcall>
+		<antcall target="module_pkg">
+			<param name="modulename" value="ebnf" />
+		</antcall>
+
+		<antcall target="module_jar">
+			<param name="modulename" value="heapsort" />
+			<param name="classpath" value="${module_classpath}" />
+		</antcall>
+		<antcall target="module_pkg">
+			<param name="modulename" value="heapsort" />
+		</antcall>
+
+		<antcall target="module_jar">
+			<param name="modulename" value="hoare" />
+			<param name="classpath" value="${module_classpath} ../../extlibs/antlr-3.0b6.jar ../../extlibs/neu-ext-1.1.1.b.jar ../../extlibs/jep-2.4.1.b.jar ../../extlibs/parser.jar ../../extlibs/jgraph.jar"/>
+		</antcall>
+		<copy todir="${dist}/hoare_${VERSION_ID}/extlibs">
+			<fileset dir="extlibs">
+				<include name="antlr-3.0b6.jar" />
+				<include name="neu-ext-1.1.1.b.jar" />
+				<include name="jep-2.4.1.b.jar" />
+				<include name="jgraph.jar" />
+			</fileset>
+			<fileset dir="${dist}/tmp/extlibs/">
+				<include name="parser.jar" />
+			</fileset>
+		</copy>
+		<antcall target="module_pkg">
+			<param name="modulename" value="hoare" />
+		</antcall>
+
+		<antcall target="module_jar">
+			<param name="modulename" value="kmp" />
+			<param name="classpath" value="${module_classpath}" />
+		</antcall>
+		<antcall target="module_pkg">
+			<param name="modulename" value="kmp" />
+		</antcall>
+
+		<antcall target="module_jar">
+			<param name="modulename" value="pulsemem" />
+			<param name="classpath" value="${module_classpath} ../../extlibs/parser.jar ../../extlibs/antlr-3.0b6.jar" />
+		</antcall>
+		<copy todir="${dist}/pulsemem_${VERSION_ID}/extlibs">
+			<fileset dir="extlibs">
+				<include name="antlr-3.0b6.jar" />
+			</fileset>
+			<fileset dir="${dist}/tmp/extlibs/">
+				<include name="parser.jar" />
+			</fileset>
+		</copy>
+		<antcall target="module_pkg">
+			<param name="modulename" value="pulsemem" />
+		</antcall>
+
+		<antcall target="module_jar">
+			<param name="modulename" value="app" />
+			<param name="classpath" value="${module_classpath}"/>
+		</antcall>
+		<antcall target="module_pkg">
+			<param name="modulename" value="app" />
+		</antcall>
+
+		<copy todir="${dist}/tmp">
+			<fileset dir="." includes="examples/**" excludes="**/SVN" />
+		</copy>
+
+		<copy todir="${dist}/tmp">
+			<fileset dir="." includes="extlibs/**" excludes="**/SVN" />
+		</copy>
+	</target>
+
+	<target name="linux">
+		<antcall target="platform_base">
+			<param name="platform" value="linux" />
+		</antcall>
+
+		<copy todir="${dist}/linux/j-Algo" file="j-Algo.sh" />
+		<copy todir="${dist}/linux/j-Algo" file="j-Algo.ico" />
+
+		<tar tarfile="${dist}/j-Algo-linux-complete-${VERSION_ID}.tar" basedir="${dist}/linux/" />
+		<gzip zipfile="${dist}/j-Algo-linux-complete-${VERSION_ID}.tar.gz" src="${dist}/j-Algo-linux-complete-${VERSION_ID}.tar" />
+		<delete file="${dist}/j-Algo-linux-complete-${VERSION_ID}.tar" />
+	</target>
+
+	<target name="macosx">
+		<antcall target="platform_base">
+			<param name="platform" value="macosx" />
+		</antcall>
+	</target>
+
+	<target name="windows">
+		<antcall target="platform_base">
+			<param name="platform" value="windows" />
+		</antcall>
+
+		<copy todir="${dist}/windows/j-Algo/" file="j-Algo.bat" />
+		<copy todir="${dist}/windows/j-Algo/" file="j-Algo.ico" />
+
+		<zip destfile="${dist}/j-Algo-windows-complete-${VERSION_ID}.zip" basedir="${dist}/windows/" />
+	</target>
+
+	<target name="main" depends="init">
+		<mkdir dir="${dist}/tmp/runtime/" />
+		<jar destfile="${dist}/tmp/runtime/j-Algo.jar">
+			<fileset dir="${bin}" includes="org/jalgo/main/**">
+			</fileset>
+			<fileset dir="${res}/main">
+			</fileset>
+			<manifest>
+				<attribute name="Class-Path" value="${classpath}" />
+				<attribute name="Main-Class" value="org.jalgo.main.JAlgoMain" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="module_jar" depends="init">
+		<mkdir dir="${dist}/tmp/runtime/modules" />
+		<jar destfile="${dist}/tmp/runtime/modules/${modulename}.jar">
+			<fileset dir="${bin}" includes="org/jalgo/module/${modulename}/**">
+			</fileset>
+			<fileset dir="${res}/module/${modulename}">
+			</fileset>
+			<manifest>
+				<attribute name="Class-Path" value="${classpath}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="module_pkg">
+		<copy todir="${dist}/${modulename}_${VERSION_ID}">
+			<fileset dir="." excludes="**/SVN">
+				<include name="examples/${modulename}/**" />
+			</fileset>
+			<fileset dir="${dist}/tmp/">
+				<include name="runtime/modules/${modulename}.jar" />
+			</fileset>
+		</copy>
+
+		<tar tarfile="${dist}/${modulename}_${VERSION_ID}.tar" basedir="${dist}/${modulename}_${VERSION_ID}" />
+		<gzip zipfile="${dist}/${modulename}_${VERSION_ID}.tar.gz" src="${dist}/${modulename}_${VERSION_ID}.tar" />
+		<delete file="${dist}/${modulename}_${VERSION_ID}.tar" />
+
+		<delete dir="${dist}/${modulename}_${VERSION_ID}" />
+	</target>
+
+	<target name="parser" depends="init">
+		<mkdir dir="${dist}/tmp/extlibs" />
+		<jar destfile="${dist}/tmp/extlibs/parser.jar">
+			<fileset dir="${bin}" includes="c00/**">
+			</fileset>
+		</jar>
+	</target>
+
+	<target name="platform_base">
+		<copy todir="${dist}/${platform}/j-Algo">
+			<fileset dir="${dist}/tmp" includes="**" />
+		</copy>
+	</target>
+
+</project>
