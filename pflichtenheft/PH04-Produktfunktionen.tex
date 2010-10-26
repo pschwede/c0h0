@@ -1,0 +1,114 @@
+\section{Produktfunktionen}
+
+%\comment{Was leistet das Produkt aus Benutzersicht?}
+
+\subsection{Editor}
+  \begin{description}
+    \item[/F0110/]
+      \textit{Programmcode anzeigen:} Der Editor ist in die grafische
+      Oberfl"ache des Moduls integriert und enth"alt den aktuellen
+      Programmcode.
+
+    \item[/F0120/]
+      \textit{Validierungsfehler anzeigen:} Validierungsfehler werden dem
+      Benutzer auf der Bedienoberfl"ache angezeigt.
+
+    \item[/F0121/]
+      \textit{Code zum Editieren sperren und Algorithmus freischalten:}
+      Diese Funktion soll Inkonsistenz zwischen Flussdiagramm, $H_0$-Code und
+      dem zugrundeliegenden $C_0$-Code verhindern.
+
+    \item[/F0122/]
+      \textit{Code zum Editieren freischalten und Algorithmus zur"ucksetzen:}
+      Erm"oglicht durch einen Klick das erneute Editieren des $C_0$-Codes.
+
+    \item[/F0130/]
+      \textit{Programmcode eingeben:}
+      \begin{itemize}
+        \item Bevor der Run-Button gedr"uckt wurde, kann der Benutzer den Code
+        im Editor (\textbf{/F0110/}) "andern.
+        \item Nachdem der Run-Button gedr"uckt wurde, wird der Programmcode
+        entsprechend validiert (\textbf{/F0120/}) und anschlie"send formatiert.
+        Anschlie"send ist kein Editieren mehr m"oglich.
+      \end{itemize}
+
+    \item[/F0140/]
+      \textit{Programme laden:}
+      \begin{itemize}
+        \item In der Bedienoberfl"ache des Editors hat der Benutzer durch Dr"ucken des
+        "Offnen-Buttons die M"oglichkeit, Programmcode aus einer Datei des Typs
+        \textbf{/D010/} zu laden.
+        In diesem Fall wird eine weitere Instanz des $C_0$$H_0$-Moduls ge"offnet.
+				\item Der Inhalt der Datei erscheint gem"a"s \textbf{/F0110/}.
+      \end{itemize}
+    
+    \item[/F0150/]
+      \textit{Programme speichern:}
+      \begin{itemize}
+        \item Der Benutzer kann Programme, die sich nach \textbf{/F0110/} im
+        Editor befinden, in einer $C_0$/$H_0$-Datei
+        (\textbf{/D010/}, \textbf{/D020/}) abspeichern.
+      \end{itemize}
+  \end{description}
+\newpage
+\subsection{$C_0$/$H_0$-"Ubersetzung}
+  Der Benutzer kann valide $C_0$-Programme in $H_0$-Programme "ubersetzen. Um
+  diese Funktion zu nutzen, muss ein $C_0$-Programm im Editor stehen und der
+  Run-Button gedr"uckt werden.
+  \begin{description}
+    \item[/F0210/]
+      \textit{Programmcode anzeigen:} Dem Benutzer wird das aktuell in der
+      Transformation befindliche Code-Statement in einem Textfeld hervorgehoben.
+    \item[/F0220/]
+      \textit{Anzeigen der Definition:} Die Definition der angewendeten
+      Transformationsregel wird dem Benutzer angezeigt.
+    \item[/F0230/]
+      \textit{"Ubersetzungsschritt ausf"uhren:}
+      \begin{description}
+        \item[/F0231/]
+        \textit{Baumstrukturierte Adressen generieren}
+        \begin{itemize}
+          \item Die Funktion wird ausgef"uhrt, indem der Einzelschritt-Button
+          ''Vorw"arts'' geklickt wird. Dieser ist jedoch erst nach
+          Ausf"uhrung der Sperrfunktion (\textbf{/F0121/}) m"oglich.
+          \item Die Transformationsregel (\textbf{/F0220/}) des entsprechenden
+          $C_0$-Programmabschnitts wird angezeigt.
+          \item Die entsprechende baumstrukturierte Adresse erscheint auf der
+          linken Seite des Code-Statements.
+          \item Der Benutzer kann somit nach jedem Transformationsschritt
+          nachvollziehen, wie die Adresse entstanden ist.
+          \item Man hat jederzeit die M"oglichkeit alle Schritte bis zum Ende
+          der Teiltransformation ''Baumstrukturierte Adressen'' durchzuf"uhren,
+          wodurch sofort alle Adressen dargestellt werden und das
+          Flussdiagramm aufgebaut wird.  
+        \end{itemize}
+
+        \item[/F0232/]
+        \textit{$C_0$ in Flussdiagramm transformieren}
+        \begin{itemize}
+          \item Die Funktion wird ausgef"uhrt, indem der Einzelschritt-Button
+          ''Vorw"arts'' geklickt wird. Dies ist jedoch erst m"oglich, nachdem alle Baumstrukturierte Adressen generiert wurden.
+          \item Das Flussdiagramm wird entsprechend des $C_0$-Codes aufgebaut.
+          \item Man hat jederzeit die M"oglichkeit alle Schritte bis zum Ende
+          der Teiltransformation ''Flussdiagramm'' durchzuf"uhren, wodurch sofort
+          das Flussdiagramm aufgebaut wird.  
+        \end{itemize}
+
+	      \item[/F0233/]
+        \textit{Abschlie"sende $H_0$ Transformation}
+	      \begin{itemize}
+	        \item Die Funktion wird ausgef"uhrt, indem der Einzelschritt-Button
+          ''Vorw"arts'' geklickt wird. Dies ist jedoch erst m"oglich, nachdem
+          das ''Flussdiagramm'' vollst"andig aufgebaut wurde.
+          \item Es wird entsprechend des Skripts Schritt f"ur Schritt die
+          abschlie"sende Transformation in den endg"ultigen $H_0$-Code
+          durchgef"uhrt.
+          \item Die jeweiligen Transformationsschritte und die dazu geh"origen trans-Funktionen werden dem Benutzer auf
+          der Bedienoberfl"ache angezeigt.
+          \item Man hat jederzeit die M"oglichkeit, alle Schritte bis zur
+          endg"ultigen Transformation durchzuf"uhren.
+	      \end{itemize}
+      \end{description}
+ \end{description}
+    
+

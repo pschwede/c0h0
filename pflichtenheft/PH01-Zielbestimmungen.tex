@@ -1,0 +1,103 @@
+﻿\section{Zielbestimmungen}
+Ziel der Arbeit dieser Projektgruppe ist die Entwicklung eines Moduls zur
+Erweiterung des Lehrwerkzeugs j-Algo. Dieses Modul soll die schrittweise
+Transformation von $C_0$-Code in $H_0$-Code entsprechend der Vorlesung
+\textit{Grundlagen der Programmierung} veranschaulichen.
+
+\subsection{Pflichtkriterien}
+
+\begin{itemize}
+	\subsubsection{Allgemein}
+	\begin{itemize}
+    \item Der Transformationsalgorithmus von $C_0$ in $H_0$ entspricht dem aus
+    der Vorlesung \textit{Grundlagen der Programmierung} an der Technischen
+    Universit"at Dresden.
+    \item Der Algorithmus ist in Einzelschritte und zusammenfassende Schritte (''Baumstrukturierte Adressen'', ''Flussdiagramm'', ''$H_0$-Synthese'')
+    gegliedert.
+    \item Das Modul erm"oglicht es, oben genannten Algorithmus schrittweise
+    ablaufen zu lassen.
+    \item Jeder Schritt soll vom Modul anschaulich dargestellt werden.
+    \item Zwischen den Einzelschritten kann der Nutzer vor und zur"uck
+    springen.
+    \item Der Nutzer hat jederzeit die M"oglichkeit, zum Ausgangsschritt
+    zur"uckzukehren, um den $C_0$-Code zu editieren und den Algorithmus
+    erneut zu beginnen.
+  % \item In jeder Darstellung wird optimale Lesbarkeit (auch f"ur Vorlesungen)    garantiert. Es gibt keinen separaten Beamermodus.
+		\item Schriftgr"o"sen lassen sich zwischen zwei Grundeinstellungen hin und her schalten,
+		um f"ur den Heimgebrauch und die Vorlesung jederzeit optimale Lesbarkeit zu gew"ahrleisten. (Beamer-Modus)
+    \item F"ur das Modul steht dem Nutzer eine Hilfestellung in Form eines
+    Handbuchs zur Verf"ugung.
+	\end{itemize}
+
+	\subsubsection{$C_0$-Editor}
+	\begin{itemize}
+    \item Ein Texteditor ist in die grafische Oberfl"ache des Moduls
+    integriert.
+    \item Der Editor soll $C_0$-Statements entsprechend der $C_0$-Syntax
+    farblich hervorheben.
+    \item Bei der Erstellung eines neuen $C_0$-Programms soll das Modul
+    folgende Parameter vom Benutzer erfragen: Anzahl der Variablen ($m$), Ein- ($k$) und Ausgabewerte ($i$).
+		\item Der aus den Parametern erzeugte $C_0$-Code soll farblich in den Hintergrund treten.
+    \item Der $C_0$-Code kann als c0-Datei gespeichert werden.
+	  \item Der Editor unterst"utzt eine R"uckg"angig- und eine Wiederhol-Funktion.
+	\end{itemize}
+
+	\subsubsection{Validierung}
+  \begin{itemize}
+    \item Der $C_0$-Code ist per Mausklick validierbar.
+    \item Ohne Validierung kann mit der Transformation nicht begonnen werden.
+		\item Nach erfolgreicher Validierung des $C_0$-Codes wird der Code im Editor formatiert.
+    \item Im Falle eines Syntaxfehlers wird der Nutzer auf diesen hingewiesen.
+  \end{itemize}
+  
+  \subsubsection{Generierung baumstrukturierter Adressen}
+	\begin{itemize}
+    \item Der $C_0$-Code wird vor Beginn der Animation zur Generierung
+    baumstrukturierter Adressen zur besseren Lesbarkeit ausgerichtet.
+    \item Bei jedem Einzelschritt wird eine Adresse einem entsprechenden
+    $C_0$-Statement zugeordnet.
+    \item Der Bezug zwischen Adresse und entsprechendem $C_0$-Statement soll
+    ersichtlich sein.
+    \item Jedes $C_0$-Statement ist samt Adresse per Mausklick gesondert
+    fokussierbar.
+    \item Generierte Adressen sollen "ahnlich der Form `f121' sein.
+    \item Generierte Adressen sollen  mit erkennbarem Bezug zum Codestatement
+    im Editor zu sehen sein.
+	\end{itemize}
+
+	\subsubsection{Flussdiagramm}
+	\begin{itemize}
+    \item Ein Flussdiagramm ist in die grafische Oberfl"ache des Moduls
+    integriert.
+    \item Die Sichtbarkeit der Flussdiagramm-Abschnitte orientiert sich an den
+    abgeschlossenen Transformationsschritten.
+    \item Dabei soll der Bezug zum entsprechenden $C_0$-Code bzw. $H_0$-Code
+    ersichtlich sein.
+    \item Jeder Flussdiagramm-Abschnitt ist per Mausklick gesondert
+    fokussierbar.
+	\end{itemize}
+	
+	\subsubsection{$H_0$-Synthese}
+	\begin{itemize}
+    \item Bei jedem Einzelschritt wird ein $H_0$-Statement entsprechend dem
+    oben genannten Algorithmus erzeugt und dargestellt.
+    \item Dabei wird ebenfalls die gem"a"s des Algorithmus angewandte $trans$-Funktion angezeigt.
+    \item "Ahnlich wie bei dem oben genannten Editor soll die $H_0$-Syntax
+    farblich hervorgehoben werden.
+    \item Dabei soll der Bezug zum entsprechenden $C_0$-Code bzw.
+    Flussdiagramm-Abschnitt ersichtlich sein.
+    \item Jedes $H_0$-Statement ist per Mausklick gesondert fokussierbar.
+    \item Der $H_0$-Code kann als h0-Datei gespeichert werden.
+	\end{itemize}
+\end{itemize}
+
+\subsection{Optionale Kriterien}
+\begin{itemize}
+  \item Das Flussdiagramm kann als g"angiges Grafikformat gespeichert
+  werden.
+	\item Mehrsprachigkeit
+  \begin{itemize}
+    \item Deutsch
+    \item Englisch
+  \end{itemize}
+\end{itemize}

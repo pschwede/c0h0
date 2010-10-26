@@ -1,0 +1,10 @@
+#!/bin/bash
+
+./umlaute
+pdflatex -interaction=batchmode Pflichtenheft.tex
+pdflatex -interaction=batchmode Pflichtenheft.tex
+rm *.log
+rm *.aux
+rm *.out 
+rm *.toc
+
