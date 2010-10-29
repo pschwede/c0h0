@@ -40,46 +40,74 @@
     </calendar>
   </calendars>
   <tasks>
-    <task id="1" name="Einarbeitungsphase" note="" work="117000" start="20101012T000000Z" end="20101018T083000Z" work-start="20101012T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="1" name="Einarbeitungsphase" note="" work="28800" start="20101012T000000Z" end="20101012T104000Z" work-start="20101012T080000Z" percent-complete="100" priority="0" type="normal" scheduling="fixed-work">
       <constraint type="must-start-on" time="20101012T000000Z"/>
+      <task id="2" name="Website" note="" work="28800" start="20101012T000000Z" end="20101012T104000Z" work-start="20101012T080000Z" percent-complete="90" priority="0" type="normal" scheduling="fixed-work"/>
     </task>
-    <task id="2" name="Website" note="" work="28800" start="20101012T000000Z" end="20101012T170000Z" work-start="20101012T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
-    <task id="3" name="Analysephase" note="" work="1319400" start="20101018T083000Z" end="20101105T170000Z" work-start="20101018T083000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="3" name="Analysephase" note="" work="1319400" start="20101012T104000Z" end="20101021T152500Z" work-start="20101012T104000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <constraint type="start-no-earlier-than" time="20101018T000000Z"/>
       <predecessors>
         <predecessor id="1" predecessor-id="1" type="FS"/>
       </predecessors>
-      <task id="4" name="Use-Case-Diagramm" note="" work="28800" duration="28800" start="20101018T083000Z" end="20101019T083000Z" work-start="20101018T083000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration"/>
-      <task id="5" name="Pflichtenheft" note="" work="430200" start="20101018T083000Z" end="20101105T170000Z" work-start="20101018T083000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
-      <task id="6" name="CRC-Model" note="" work="430200" start="20101018T083000Z" end="20101105T170000Z" work-start="20101018T083000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
-      <task id="7" name="Analyseklassendiagramm" note="" work="430200" start="20101018T083000Z" end="20101105T170000Z" work-start="20101018T083000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="4" name="Projektplan" note="" work="28800" start="20101012T104000Z" end="20101013T104000Z" work-start="20101012T104000Z" percent-complete="80" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="5" name="CRC-Model" note="" work="430200" start="20101012T104000Z" end="20101021T152500Z" work-start="20101012T104000Z" percent-complete="80" priority="0" type="normal" scheduling="fixed-work">
+        <task id="6" name="Use-Case-Diagramm" note="" work="430200" duration="215100" start="20101012T104000Z" end="20101021T152500Z" work-start="20101012T104000Z" percent-complete="100" priority="0" type="normal" scheduling="fixed-duration"/>
+      </task>
+      <task id="7" name="Pflichtenheft" note="" work="430200" start="20101012T104000Z" end="20101021T152500Z" work-start="20101012T104000Z" percent-complete="99" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="8" name="Analyseklassendiagramm" note="" work="430200" start="20101012T104000Z" end="20101021T152500Z" work-start="20101012T104000Z" percent-complete="60" priority="0" type="normal" scheduling="fixed-work"/>
     </task>
-    <task id="8" name="Entwurfsphase" note="" work="316800" start="20101012T000000Z" end="20101119T170000Z" work-start="20101012T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
-      <task id="9" name="Fertiger Implementationsentwurf" note="" work="28800" start="20101012T000000Z" end="20101012T170000Z" work-start="20101012T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
-      <task id="10" name="Entwurfsklassendiagramm" note="" work="288000" start="20101105T170000Z" end="20101119T170000Z" work-start="20101108T080000Z" percent-complete="86" priority="0" type="normal" scheduling="fixed-work">
-        <predecessors>
-          <predecessor id="1" predecessor-id="3" type="FS"/>
-        </predecessors>
+    <task id="9" name="Entwurfsphase" note="" work="57600" start="20101012T000000Z" end="20101022T152500Z" work-start="20101012T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <task id="10" name="Fertiger Implementationsentwurf" note="" work="28800" start="20101021T152500Z" end="20101022T152500Z" work-start="20101021T152500Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="11" name="Entwurfsklassendiagramm" note="" work="28800" start="20101021T152500Z" end="20101022T152500Z" work-start="20101021T152500Z" percent-complete="86" priority="0" type="normal" scheduling="fixed-work">
+          <predecessors>
+            <predecessor id="1" predecessor-id="3" type="FS"/>
+          </predecessors>
+        </task>
+      </task>
+      <task id="12" name="&#xDC;berarbeitung des Pflichtenheftes" note="" work="28800" start="20101012T000000Z" end="20101012T170000Z" work-start="20101012T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="13" name="&#xDC;berarbeitung des Mockups" note="" work="28800" start="20101012T000000Z" end="20101012T170000Z" work-start="20101012T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
       </task>
     </task>
-    <task id="11" name="Implementierung" note="" work="432000" start="20101119T170000Z" end="20101210T170000Z" work-start="20101122T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="14" name="Implementierung" note="" work="432000" start="20101022T152500Z" end="20101112T152500Z" work-start="20101022T152500Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <predecessors>
-        <predecessor id="1" predecessor-id="8" type="FS"/>
+        <predecessor id="1" predecessor-id="9" type="FS"/>
       </predecessors>
     </task>
-    <task id="12" name="Pflege und Testen " note="" work="403200" start="20101210T170000Z" end="20110114T170000Z" work-start="20101213T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="15" name="Pflege und Testen " note="" work="403200" start="20101112T152500Z" end="20101202T152500Z" work-start="20101112T152500Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <predecessors>
-        <predecessor id="1" predecessor-id="11" type="FS"/>
+        <predecessor id="1" predecessor-id="14" type="FS"/>
       </predecessors>
     </task>
   </tasks>
   <resource-groups>
-    <group id="1" name="Mathias Kaufmann" admin-name="Hendrik Sollich" admin-phone="" admin-email=""/>
-    <group id="2" name="Philipp Gei&#xDF;ler" admin-name="Hendrik Sollich" admin-phone="" admin-email=""/>
-    <group id="3" name="Patrick Tempel" admin-name="Hendrik Sollich" admin-phone="" admin-email=""/>
-    <group id="4" name="Peter Schwede" admin-name="Hendrik Sollich" admin-phone="" admin-email=""/>
-    <group id="5" name="Hendrik Sollich" admin-name="Martin Morgenstern" admin-phone="" admin-email="Hendrik.Sollich@mailbox.tu-dresden.de"/>
+    <group id="1" name="Buchhaltung" admin-name="Patrick Tempel" admin-phone="" admin-email=""/>
+    <group id="2" name="QA" admin-name="Philipp Gei&#xDF;ler" admin-phone="" admin-email=""/>
+    <group id="3" name="PR" admin-name="Peter Schwede" admin-phone="" admin-email=""/>
+    <group id="4" name="Admin" admin-name="Mathias Kaufmann" admin-phone="" admin-email=""/>
+    <group id="5" name="Haue-Kassierer" admin-name="Hendrik Sollich" admin-phone="" admin-email="Hendrik.Sollich@mailbox.tu-dresden.de"/>
   </resource-groups>
-  <resources/>
-  <allocations/>
+  <resources>
+    <resource group="2" id="1" name="Patrick Tempel" short-name="" type="1" units="0" email="" note="" std-rate="0"/>
+    <resource group="1" id="2" name="Philipp Gei&#xDF;ler" short-name="" type="1" units="0" email="" note="" std-rate="0"/>
+    <resource group="4" id="3" name="Mathias Kaufmann" short-name="" type="1" units="0" email="" note="" std-rate="0"/>
+    <resource group="3" id="4" name="Peter Schwede" short-name="" type="1" units="0" email="" note="" std-rate="0"/>
+    <resource group="5" id="5" name="Hendrik Sollich" short-name="" type="1" units="0" email="" note="" std-rate="0"/>
+  </resources>
+  <allocations>
+    <allocation task-id="6" resource-id="1" units="50"/>
+    <allocation task-id="5" resource-id="1" units="100"/>
+    <allocation task-id="6" resource-id="2" units="50"/>
+    <allocation task-id="7" resource-id="2" units="100"/>
+    <allocation task-id="5" resource-id="2" units="100"/>
+    <allocation task-id="8" resource-id="2" units="100"/>
+    <allocation task-id="8" resource-id="3" units="100"/>
+    <allocation task-id="2" resource-id="3" units="100"/>
+    <allocation task-id="6" resource-id="4" units="50"/>
+    <allocation task-id="12" resource-id="4" units="100"/>
+    <allocation task-id="2" resource-id="4" units="100"/>
+    <allocation task-id="6" resource-id="5" units="50"/>
+    <allocation task-id="7" resource-id="5" units="100"/>
+    <allocation task-id="12" resource-id="5" units="100"/>
+    <allocation task-id="2" resource-id="5" units="100"/>
+  </allocations>
 </project>
