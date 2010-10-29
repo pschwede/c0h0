@@ -22,16 +22,64 @@
           <interval start="1300" end="1700"/>
         </overridden-day-type>
       </overridden-day-types>
-      <days/>
+      <days>
+        <day date="20101229" type="day-type" id="1"/>
+        <day date="20101228" type="day-type" id="1"/>
+        <day date="20110107" type="day-type" id="1"/>
+        <day date="20101227" type="day-type" id="1"/>
+        <day date="20110106" type="day-type" id="1"/>
+        <day date="20110105" type="day-type" id="1"/>
+        <day date="20110104" type="day-type" id="1"/>
+        <day date="20101224" type="day-type" id="1"/>
+        <day date="20101023" type="day-type" id="1"/>
+        <day date="20110103" type="day-type" id="1"/>
+        <day date="20101031" type="day-type" id="1"/>
+        <day date="20101231" type="day-type" id="1"/>
+        <day date="20101230" type="day-type" id="1"/>
+      </days>
     </calendar>
   </calendars>
   <tasks>
-    <task id="1" name="Einarbeitungs Phase" note="" work="345600" start="20101015T000000Z" end="20101101T170000Z" work-start="20101015T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
-      <constraint type="must-start-on" time="20101015T000000Z"/>
+    <task id="1" name="Einarbeitungsphase" note="" work="117000" start="20101012T000000Z" end="20101018T083000Z" work-start="20101012T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20101012T000000Z"/>
     </task>
-    <task id="2" name="" note="" work="28800" start="20101012T000000Z" end="20101012T170000Z" work-start="20101012T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+    <task id="2" name="Website" note="" work="28800" start="20101012T000000Z" end="20101012T170000Z" work-start="20101012T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+    <task id="3" name="Analysephase" note="" work="1319400" start="20101018T083000Z" end="20101105T170000Z" work-start="20101018T083000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="start-no-earlier-than" time="20101018T000000Z"/>
+      <predecessors>
+        <predecessor id="1" predecessor-id="1" type="FS"/>
+      </predecessors>
+      <task id="4" name="Use-Case-Diagramm" note="" work="28800" duration="28800" start="20101018T083000Z" end="20101019T083000Z" work-start="20101018T083000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration"/>
+      <task id="5" name="Pflichtenheft" note="" work="430200" start="20101018T083000Z" end="20101105T170000Z" work-start="20101018T083000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="6" name="CRC-Model" note="" work="430200" start="20101018T083000Z" end="20101105T170000Z" work-start="20101018T083000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="7" name="Analyseklassendiagramm" note="" work="430200" start="20101018T083000Z" end="20101105T170000Z" work-start="20101018T083000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+    </task>
+    <task id="8" name="Entwurfsphase" note="" work="316800" start="20101012T000000Z" end="20101119T170000Z" work-start="20101012T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <task id="9" name="Fertiger Implementationsentwurf" note="" work="28800" start="20101012T000000Z" end="20101012T170000Z" work-start="20101012T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="10" name="Entwurfsklassendiagramm" note="" work="288000" start="20101105T170000Z" end="20101119T170000Z" work-start="20101108T080000Z" percent-complete="86" priority="0" type="normal" scheduling="fixed-work">
+        <predecessors>
+          <predecessor id="1" predecessor-id="3" type="FS"/>
+        </predecessors>
+      </task>
+    </task>
+    <task id="11" name="Implementierung" note="" work="432000" start="20101119T170000Z" end="20101210T170000Z" work-start="20101122T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="8" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="12" name="Pflege und Testen " note="" work="403200" start="20101210T170000Z" end="20110114T170000Z" work-start="20101213T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <predecessors>
+        <predecessor id="1" predecessor-id="11" type="FS"/>
+      </predecessors>
+    </task>
   </tasks>
-  <resource-groups/>
+  <resource-groups>
+    <group id="1" name="Mathias Kaufmann" admin-name="Hendrik Sollich" admin-phone="" admin-email=""/>
+    <group id="2" name="Philipp Gei&#xDF;ler" admin-name="Hendrik Sollich" admin-phone="" admin-email=""/>
+    <group id="3" name="Patrick Tempel" admin-name="Hendrik Sollich" admin-phone="" admin-email=""/>
+    <group id="4" name="Peter Schwede" admin-name="Hendrik Sollich" admin-phone="" admin-email=""/>
+    <group id="5" name="Hendrik Sollich" admin-name="Martin Morgenstern" admin-phone="" admin-email="Hendrik.Sollich@mailbox.tu-dresden.de"/>
+  </resource-groups>
   <resources/>
   <allocations/>
 </project>
