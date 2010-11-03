@@ -10,7 +10,7 @@
       Programmcode.
 
     \item[/F0120/]
-      \textit{Validierungsfehler anzeigen:} Validierungsfehler werden dem
+      \textit{Parserfehler anzeigen:} Parserfehler werden dem
       Benutzer auf der Bedienoberfl"ache angezeigt.
 
     \item[/F0121/]
@@ -28,7 +28,7 @@
         \item Bevor der Run-Button gedr"uckt wurde, kann der Benutzer den Code
         im Editor (\textbf{/F0110/}) "andern.
         \item Nachdem der Run-Button gedr"uckt wurde, wird der Programmcode
-        entsprechend validiert (\textbf{/F0120/}) und anschlie"send formatiert.
+        entsprechend geparst (\textbf{/F0120/}) und anschlie"send formatiert.
         Anschlie"send ist kein Editieren mehr m"oglich.
       \end{itemize}
 
@@ -52,7 +52,7 @@
   \end{description}
 \newpage
 \subsection{$C_0$/$H_0$-"Ubersetzung}
-  Der Benutzer kann valide $C_0$-Programme in $H_0$-Programme "ubersetzen. Um
+  Der Benutzer kann $C_0$-Programme in $H_0$-Programme "ubersetzen. Um
   diese Funktion zu nutzen, muss ein $C_0$-Programm im Editor stehen und der
   Run-Button gedr"uckt werden.
   \begin{description}
@@ -75,6 +75,7 @@
           $C_0$-Programmabschnitts wird angezeigt.
           \item Die entsprechende baumstrukturierte Adresse erscheint auf der
           linken Seite des Code-Statements.
+					Die Reihenfolge entspricht einer Tiefensuche, die Adressen werden also Zeile f"ur Zeile angezeigt.
           \item Der Benutzer kann somit nach jedem Transformationsschritt
           nachvollziehen, wie die Adresse entstanden ist.
           \item Man hat jederzeit die M"oglichkeit alle Schritte bis zum Ende
@@ -89,6 +90,7 @@
           \item Die Funktion wird ausgef"uhrt, indem der Einzelschritt-Button
           ''Vorw"arts'' geklickt wird. Dies ist jedoch erst m"oglich, nachdem alle Baumstrukturierte Adressen generiert wurden.
           \item Das Flussdiagramm wird entsprechend des $C_0$-Codes aufgebaut.
+					Dabei wird der Code-Baum durch Breitensuche abgelaufen.
           \item Man hat jederzeit die M"oglichkeit alle Schritte bis zum Ende
           der Teiltransformation ''Flussdiagramm'' durchzuf"uhren, wodurch sofort
           das Flussdiagramm aufgebaut wird.  

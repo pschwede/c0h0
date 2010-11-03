@@ -1,0 +1,16 @@
+*.pdf
+*.aux
+*.log
+*.out
+*.toc
+*.gz
+*.swp
+*.swn
+*.swo
+*bak
+.project
+.texlipse
+.directory
+.*
+*~
+stats
