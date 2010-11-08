@@ -16,42 +16,46 @@ import javax.swing.JSplitPane;
 public class Clickdummy extends JPanel {
 	JPanel right;
 	JPanel left;
-	JPanel top;
+	JSplitPane leftright;
+	JSplitPane topbottom;
 	JPanel bottom;
 	JEditorPane C0edit;
 
 	public Clickdummy() {
 
+		// panels
 		left = new JPanel();
 		right = new JPanel();
-		top = new JPanel();
 		bottom = new JPanel();
 		C0edit = new JEditorPane();
 		C0edit.setSize(500, 500);
 
-		JLabel l = new JLabel("left");
+		//7\ labels
+		JLabel l = new JLabel("editor");
 		JLabel r = new JLabel("right");
 		JLabel b = new JLabel("bottom");
-
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
-		
-		JSplitPane topbottom = new JSplitPane(JSplitPane.VERTICAL_SPLIT, true,top, bottom);
-		JSplitPane leftright		 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true,left, right);
-		topbottom.setOneTouchExpandable(true);
-		top.add(leftright);
-		add(topbottom);
-
-
-		left.add(C0edit);
+		left.add(l);
 		right.add(r);
 		bottom.add(b);
-
 		left.setBorder(BorderFactory.createLineBorder(Color.black, 1));
+		left.setLayout(new BoxLayout(left, BoxLayout.Y_AXIS));
 		right.setBorder(BorderFactory.createLineBorder(Color.black, 1));
 		bottom.setBorder(BorderFactory.createLineBorder(Color.black, 1));
-		
-		bottom.setSize(60,60);
+
+		//eintilung ;)
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		JSplitPane leftright = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
+				true, left, right);
+		JSplitPane topbottom = new JSplitPane(JSplitPane.VERTICAL_SPLIT, true,
+				leftright, bottom);
+		topbottom.setOneTouchExpandable(true);
+		leftright.setResizeWeight(.5d);
+		topbottom.setResizeWeight(.85d); 
+
+		add(topbottom);
+		left.add(C0edit);
+		C0edit.setPreferredSize(new Dimension());
+
 
 	}
 }
