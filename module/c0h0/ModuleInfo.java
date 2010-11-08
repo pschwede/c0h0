@@ -60,7 +60,7 @@ implements IModuleInfo {
 	}
 
 	public String getAuthor() {
-		return "The author";
+		return "C0H0 Team";
 	}
 
 	public String getDescription() {

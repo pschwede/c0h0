@@ -38,6 +38,7 @@ import org.jalgo.main.AbstractModuleConnector;
 import org.jalgo.main.gui.JAlgoGUIConnector;
 import org.jalgo.main.gui.components.JToolbarButton;
 import org.jalgo.main.util.Messages;
+import org.jalgo.module.c0h0.gui.Clickdummy;
 
 
 public class ModuleConnector
@@ -52,6 +53,9 @@ extends AbstractModuleConnector {
 			new ImageIcon(Messages.getResourceURL("main", "ui.Logo")),
 			SwingConstants.CENTER);
 		contentPane.add(helloJAlgo, BorderLayout.CENTER);
+		
+		Clickdummy dummy = new Clickdummy();
+		contentPane.add(dummy,BorderLayout.CENTER);
 
 		JMenu menu = JAlgoGUIConnector.getInstance().getModuleMenu(this);
 		JMenuItem item = new JMenuItem("a menu item");
@@ -68,7 +72,7 @@ extends AbstractModuleConnector {
 
 	@Override
 	public void run() {
-		System.out.println("testModule is running");
+		System.out.println("C0H0 Module is running");
 	}
 
 	@Override
