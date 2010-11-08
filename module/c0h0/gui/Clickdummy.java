@@ -11,11 +11,13 @@ import javax.swing.BoxLayout;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
 public class Clickdummy extends JPanel {
 	JPanel right;
 	JPanel left;
+	JScrollPane leftscroll;
 	JSplitPane leftright;
 	JSplitPane topbottom;
 	JPanel bottom;
@@ -25,6 +27,7 @@ public class Clickdummy extends JPanel {
 
 		// panels
 		left = new JPanel();
+		leftscroll = new JScrollPane();
 		right = new JPanel();
 		bottom = new JPanel();
 		C0edit = new JEditorPane();
@@ -53,7 +56,8 @@ public class Clickdummy extends JPanel {
 		topbottom.setResizeWeight(.85d); 
 
 		add(topbottom);
-		left.add(C0edit);
+		left.add(leftscroll);
+		leftscroll.add(C0edit);
 		C0edit.setPreferredSize(new Dimension());
 
 
