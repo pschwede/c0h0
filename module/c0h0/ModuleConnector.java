@@ -26,13 +26,17 @@ import java.awt.BorderLayout;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
+import javax.swing.event.ListDataListener;
 
 import org.jalgo.main.AbstractModuleConnector;
 import org.jalgo.main.gui.JAlgoGUIConnector;
@@ -52,6 +56,7 @@ public class ModuleConnector extends AbstractModuleConnector {
 		contentPane.add(helloJAlgo, BorderLayout.CENTER);
 
 		// hier alles rein
+		/** TODO ClickDummy ist keine Dauerloesung*/
 		Clickdummy dummy = new Clickdummy();
 		contentPane.add(dummy, BorderLayout.CENTER);
 
@@ -59,6 +64,8 @@ public class ModuleConnector extends AbstractModuleConnector {
 		JMenuItem item = new JMenuItem("a menu item");
 		menu.add(item);
 
+		
+		// Step buttons erzeugen
 		JToolBar toolbar = JAlgoGUIConnector.getInstance().getModuleToolbar(
 				this);
 		JToolbarButton bigStepBack = new JToolbarButton(
@@ -72,11 +79,16 @@ public class ModuleConnector extends AbstractModuleConnector {
 		JToolbarButton runButton = new JToolbarButton(
 				new ImageIcon(Messages.getResourceURL("main", "Icon.Finish_algorithm")), "a tooltip", "");
 		
+		// step buttons einfuegen
 		toolbar.add(bigStepBack);
 		toolbar.add(smallStepBack);
 		toolbar.add(smallStepForward);
 		toolbar.add(bigStepForward);
 		toolbar.add(runButton);
+
+		// ViewMode Combobox
+		JComboBox viewModeBox= new JComboBox(new Object []{"C0 - FlowChart","FlowChart - H0", "C0 - H0"});
+		toolbar.add(viewModeBox);
 	}
 
 	@Override

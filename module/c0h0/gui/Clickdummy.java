@@ -50,13 +50,12 @@ public class Clickdummy extends JPanel {
 		JLabel l = new JLabel("editor");
 		JLabel r = new JLabel("right");
 		JLabel b = new JLabel("bottom");
-		left.add(l);
 		right.add(r);
 		bottom.add(b);
-		left.setBorder(BorderFactory.createLineBorder(Color.black, 1));
+		left.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
 		left.setLayout(new BoxLayout(left, BoxLayout.Y_AXIS));
-		right.setBorder(BorderFactory.createLineBorder(Color.black, 1));
-		bottom.setBorder(BorderFactory.createLineBorder(Color.black, 1));
+		right.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
+		bottom.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
 
 		//eintilung ;)
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
