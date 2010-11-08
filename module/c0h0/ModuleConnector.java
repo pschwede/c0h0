@@ -40,36 +40,39 @@ import org.jalgo.main.gui.components.JToolbarButton;
 import org.jalgo.main.util.Messages;
 import org.jalgo.module.c0h0.view.Clickdummy;
 
-
-public class ModuleConnector
-extends AbstractModuleConnector {
+public class ModuleConnector extends AbstractModuleConnector {
 
 	@Override
 	public void init() {
-		JComponent contentPane =
-			JAlgoGUIConnector.getInstance().getModuleComponent(this);
-		JLabel helloJAlgo = new JLabel(
-			"C0H0 Modul",
-			new ImageIcon(Messages.getResourceURL("main", "ui.Logo")),
-			SwingConstants.CENTER);
-		contentPane.add(helloJAlgo, BorderLayout.CENTER);
-		
+		JComponent contentPane = JAlgoGUIConnector.getInstance()
+				.getModuleComponent(this);
 
-		//hier alles rein
+		JLabel helloJAlgo = new JLabel("C0H0 Modul", new ImageIcon(Messages
+				.getResourceURL("main", "ui.Logo")), SwingConstants.CENTER);
+		contentPane.add(helloJAlgo, BorderLayout.CENTER);
+
+		// hier alles rein
 		Clickdummy dummy = new Clickdummy();
-		contentPane.add(dummy,BorderLayout.CENTER);
+		contentPane.add(dummy, BorderLayout.CENTER);
 
 		JMenu menu = JAlgoGUIConnector.getInstance().getModuleMenu(this);
 		JMenuItem item = new JMenuItem("a menu item");
 		menu.add(item);
 
-		JToolBar toolbar =
-			JAlgoGUIConnector.getInstance().getModuleToolbar(this);
-		JToolbarButton button = new JToolbarButton(
-			new ImageIcon(Messages.getResourceURL("main", "ui.Logo_small")),
-			"a tooltip",
-			"");
-		toolbar.add(button);
+		JToolBar toolbar = JAlgoGUIConnector.getInstance().getModuleToolbar(
+				this);
+		JToolbarButton bigStepBack = new JToolbarButton(
+				new ImageIcon(Messages	.getResourceURL("main", "Icon.Undo_all")), "a tooltip", "");
+		JToolbarButton smallStepBack = new JToolbarButton(
+				new ImageIcon(Messages.getResourceURL("main", "Icon.Undo_blockstep")), "a tooltip", "");
+		JToolbarButton bigStepForward = new JToolbarButton(
+				new ImageIcon(Messages	.getResourceURL("main", "Icon.Perform_all")), "a tooltip", "");
+		JToolbarButton smallStepForward = new JToolbarButton(
+				new ImageIcon(Messages.getResourceURL("main", "Icon.Perform_blockstep")), "a tooltip", "");
+		toolbar.add(bigStepBack);
+		toolbar.add(smallStepBack);
+		toolbar.add(smallStepForward);
+		toolbar.add(bigStepForward);
 	}
 
 	@Override
@@ -79,7 +82,7 @@ extends AbstractModuleConnector {
 
 	@Override
 	public void setDataFromFile(ByteArrayInputStream data) {
-	// here is no action performed in test module
+		// here is no action performed in test module
 	}
 
 	@Override
@@ -89,6 +92,6 @@ extends AbstractModuleConnector {
 
 	@Override
 	public void print() {
-	// here is no action performed in test module
+		// here is no action performed in test module
 	}
 }

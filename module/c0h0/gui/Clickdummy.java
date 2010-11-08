@@ -5,7 +5,13 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Insets;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.Reader;
+import java.io.Writer;
 
+import javax.swing.Action;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JEditorPane;
@@ -13,6 +19,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Caret;
+import javax.swing.text.Document;
+import javax.swing.text.EditorKit;
+import javax.swing.text.ViewFactory;
+
+import org.jalgo.module.am0c0.gui.jeditor.JEditor;
 
 public class Clickdummy extends JPanel {
 	JPanel right;
@@ -21,7 +34,7 @@ public class Clickdummy extends JPanel {
 	JSplitPane leftright;
 	JSplitPane topbottom;
 	JPanel bottom;
-	JEditorPane C0edit;
+	JEditorPane c0edit;
 
 	public Clickdummy() {
 
@@ -30,8 +43,10 @@ public class Clickdummy extends JPanel {
 		leftscroll = new JScrollPane();
 		right = new JPanel();
 		bottom = new JPanel();
-		C0edit = new JEditorPane();
-		C0edit.setSize(500, 500);
+		c0edit = new JEditorPane();
+		c0edit.setSize(500, 500);
+
+
 
 		//7\ labels
 		JLabel l = new JLabel("editor");
@@ -57,9 +72,30 @@ public class Clickdummy extends JPanel {
 
 		add(topbottom);
 		left.add(leftscroll);
-		leftscroll.add(C0edit);
-		C0edit.setPreferredSize(new Dimension());
+		leftscroll.add(c0edit);
+		c0edit.setMinimumSize(new Dimension());
+		//c0edit.setEditorKitForContentType('c', new EditorKit())
 
 
 	}
 }
+
+
+/*
+ * 		c0edit.setText("int main()\n"+
+				"{\n"+
+				"	int x1, x2, ... , xm;\n"+
+				"	scanf(\"%i\", &x1);\n"+
+				"	scanf(\"%i\", &x2);\n"+
+				"	...\n"+
+				"	scanf(\"%i\", &xm);\n"+
+				 "\n"+
+				"	if(x1 > 4)\n"+
+				"	{\n"+
+				"		x1 = x1 -1\n"+
+				"	}\n"+
+				" .....\n"+
+				"	printf(\"%d\", xi);\n"+
+				"	Areturn 0;\n"+
+				"}");
+ * */
