@@ -48,7 +48,7 @@ extends AbstractModuleConnector {
 		JComponent contentPane =
 			JAlgoGUIConnector.getInstance().getModuleComponent(this);
 		JLabel helloJAlgo = new JLabel(
-			"Hello j-Algo!",
+			"C0H0 Modul",
 			new ImageIcon(Messages.getResourceURL("main", "ui.Logo")),
 			SwingConstants.CENTER);
 		contentPane.add(helloJAlgo, BorderLayout.CENTER);
