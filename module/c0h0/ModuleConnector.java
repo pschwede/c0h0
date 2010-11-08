@@ -38,7 +38,7 @@ import org.jalgo.main.AbstractModuleConnector;
 import org.jalgo.main.gui.JAlgoGUIConnector;
 import org.jalgo.main.gui.components.JToolbarButton;
 import org.jalgo.main.util.Messages;
-import org.jalgo.module.c0h0.view.Clickdummy;
+import org.jalgo.module.c0h0.gui.Clickdummy;
 
 public class ModuleConnector extends AbstractModuleConnector {
 
@@ -69,10 +69,14 @@ public class ModuleConnector extends AbstractModuleConnector {
 				new ImageIcon(Messages	.getResourceURL("main", "Icon.Perform_all")), "a tooltip", "");
 		JToolbarButton smallStepForward = new JToolbarButton(
 				new ImageIcon(Messages.getResourceURL("main", "Icon.Perform_blockstep")), "a tooltip", "");
+		JToolbarButton runButton = new JToolbarButton(
+				new ImageIcon(Messages.getResourceURL("main", "Icon.Finish_algorithm")), "a tooltip", "");
+		
 		toolbar.add(bigStepBack);
 		toolbar.add(smallStepBack);
 		toolbar.add(smallStepForward);
 		toolbar.add(bigStepForward);
+		toolbar.add(runButton);
 	}
 
 	@Override

@@ -1,17 +1,8 @@
 package org.jalgo.module.c0h0.gui;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Reader;
-import java.io.Writer;
 
-import javax.swing.Action;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JEditorPane;
@@ -19,13 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Caret;
-import javax.swing.text.Document;
-import javax.swing.text.EditorKit;
-import javax.swing.text.ViewFactory;
 
-import org.jalgo.module.am0c0.gui.jeditor.JEditor;
 
 public class Clickdummy extends JPanel {
 	JPanel right;
