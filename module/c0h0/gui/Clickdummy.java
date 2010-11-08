@@ -25,11 +25,12 @@ public class Clickdummy extends JPanel {
 
 		// panels
 		left = new JPanel();
-		leftscroll = new JScrollPane();
 		right = new JPanel();
 		bottom = new JPanel();
 		c0edit = new JEditorPane();
 		c0edit.setSize(500, 500);
+		leftscroll = new JScrollPane(c0edit);
+		//c0edit.setEditorKit(new Numbered)
 
 
 
@@ -57,9 +58,8 @@ public class Clickdummy extends JPanel {
 
 		add(topbottom);
 		left.add(leftscroll);
-		leftscroll.add(c0edit);
+		leftscroll.setPreferredSize(new Dimension());
 		c0edit.setMinimumSize(new Dimension());
-		//c0edit.setEditorKitForContentType('c', new EditorKit())
 
 
 	}
