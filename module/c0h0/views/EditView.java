@@ -1,6 +1,7 @@
-package org.jalgo.module.c0h0.gui;
+package org.jalgo.module.c0h0.views;
 
 public class EditView  {
-	private void render(){}
-	private void showC0errors(){}
+	public EditView() {
+		
+	}
 }
