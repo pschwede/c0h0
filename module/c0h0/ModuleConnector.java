@@ -54,6 +54,8 @@ extends AbstractModuleConnector {
 			SwingConstants.CENTER);
 		contentPane.add(helloJAlgo, BorderLayout.CENTER);
 		
+
+		//hier alles rein
 		Clickdummy dummy = new Clickdummy();
 		contentPane.add(dummy,BorderLayout.CENTER);
 
