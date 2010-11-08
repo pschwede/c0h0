@@ -38,7 +38,7 @@ import org.jalgo.main.AbstractModuleConnector;
 import org.jalgo.main.gui.JAlgoGUIConnector;
 import org.jalgo.main.gui.components.JToolbarButton;
 import org.jalgo.main.util.Messages;
-import org.jalgo.module.c0h0.gui.Clickdummy;
+import org.jalgo.module.c0h0.view.Clickdummy;
 
 
 public class ModuleConnector
