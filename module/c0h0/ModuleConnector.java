@@ -28,25 +28,19 @@ import java.awt.event.ActionListener;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
-import javax.swing.event.ListDataListener;
 
 import org.jalgo.main.AbstractModuleConnector;
 import org.jalgo.main.gui.JAlgoGUIConnector;
-import org.jalgo.main.gui.components.JToolbarButton;
 import org.jalgo.main.util.Messages;
 import org.jalgo.module.c0h0.gui.Clickdummy;
 import org.jalgo.module.c0h0.gui.ToolbarAssistent;
-import org.jalgo.module.c0h0.views.C0View;
 
 // TODO Actionlistener woanders unterbringe
 public class ModuleConnector extends AbstractModuleConnector implements ActionListener{
@@ -77,7 +71,7 @@ public class ModuleConnector extends AbstractModuleConnector implements ActionLi
 		contentPane.add(dummy, BorderLayout.CENTER);
 		
 		// TODO das ist auch keine schöne Lösung
-		toolbarAssistent.c0View = dummy.c0view;
+		//toolbarAssistent.c0View = dummy.c0view;
 
 	}
 
