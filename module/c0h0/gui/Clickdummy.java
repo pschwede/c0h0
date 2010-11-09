@@ -2,6 +2,8 @@ package org.jalgo.module.c0h0.gui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -25,9 +27,6 @@ import javax.swing.text.ViewFactory;
 
 import org.jalgo.module.c0h0.views.C0View;
 
-import com.mxgraph.swing.mxGraphComponent;
-import com.mxgraph.view.mxGraph;
-
 public class Clickdummy extends JPanel {
 	JPanel right;
 	JPanel left;
@@ -36,35 +35,31 @@ public class Clickdummy extends JPanel {
 	JSplitPane topbottom;
 	JPanel bottom;
 	JEditorPane c0edit;
-	public C0View c0view;
 
 	public Clickdummy() {
 
-		c0view = new C0View(c0edit);
-		
+		C0View c0view = new C0View(c0edit);
+		FlowChartView fcview = new FlowChartView();
 		// panels
 		left = new JPanel();
 		right = new JPanel();
 		bottom = new JPanel();
-		c0edit = new JEditorPane("text/html",c0view.highliteText());
+		c0edit = new JEditorPane("text/html", c0view.plainText());
 		c0edit.setSize(500, 500);
 		leftscroll = new JScrollPane(c0edit);
-		//c0edit.setEditorKit(new Numbered)
+		// c0edit.setEditorKit(new Numbered)
 
-
-
-		//7\ labels
+		// 7\ labels
 		JLabel l = new JLabel("editor");
 		JLabel r = new JLabel("right");
 		JLabel b = new JLabel("bottom");
-		//right.add(r);
 		bottom.add(b);
 		left.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
 		left.setLayout(new BoxLayout(left, BoxLayout.Y_AXIS));
 		right.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
 		bottom.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
 
-		//einteilung ;)
+		// einteilung ;)
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		JSplitPane leftright = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
 				true, left, right);
@@ -72,62 +67,20 @@ public class Clickdummy extends JPanel {
 				leftright, bottom);
 		topbottom.setOneTouchExpandable(true);
 		leftright.setResizeWeight(.5d);
-		topbottom.setResizeWeight(.85d); 
+		topbottom.setResizeWeight(.85d);
 
 		add(topbottom);
 		left.add(leftscroll);
 		leftscroll.setPreferredSize(new Dimension());
 		c0edit.setMinimumSize(new Dimension());
-		
-		mxGraph flowChartView = new mxGraph();
-		Object parent = flowChartView.getDefaultParent();
-
-		flowChartView.getModel().beginUpdate();
-		try {
-			Object v1 = flowChartView.insertVertex(parent, null, "<b>Hello</b>", 20, 20, 80,
-					30, "ROUNDED");
-			Object v2 = flowChartView.insertVertex(parent, null, "World!", 20, 150, 80,
-					30, "ROUNDED");
-			Object v3 = flowChartView.insertVertex(parent, null, null, 150, 35, 0, 0);
-			Object v4 = flowChartView.insertVertex(parent, null, null, 150, 165, 0, 0);
-			flowChartView.insertEdge(parent, null, "then\nf111", v1, v2);
-			flowChartView.insertEdge(parent, null, null, v2, v4);
-			flowChartView.insertEdge(parent, null, "else", v4, v3);
-			flowChartView.insertEdge(parent, null, null, v3, v1);
-		} finally {
-			flowChartView.getModel().endUpdate();
-		}
-
-		mxGraphComponent graphComponent = new mxGraphComponent(flowChartView);
-		graphComponent.setDragEnabled(false);
-		graphComponent.setSize(500,500);
-		graphComponent.setMinimumSize(new Dimension());
-		graphComponent.setEnabled(true);
-		right.add(graphComponent);
-		JButton zoomIn = new JButton("+");
-		JButton zoomOut = new JButton("-");
-		right.add(zoomIn);
-		right.add(zoomOut);
+		right.add(fcview);
 
 	}
 }
 
-
 /*
- * 		c0edit.setText("int main()\n"+
-				"{\n"+
-				"	int x1, x2, ... , xm;\n"+
-				"	scanf(\"%i\", &x1);\n"+
-				"	scanf(\"%i\", &x2);\n"+
-				"	...\n"+
-				"	scanf(\"%i\", &xm);\n"+
-				 "\n"+
-				"	if(x1 > 4)\n"+
-				"	{\n"+
-				"		x1 = x1 -1\n"+
-				"	}\n"+
-				" .....\n"+
-				"	printf(\"%d\", xi);\n"+
-				"	Areturn 0;\n"+
-				"}");
- * */
+ * c0edit.setText("int main()\n"+ "{\n"+ "	int x1, x2, ... , xm;\n"+
+ * "	scanf(\"%i\", &x1);\n"+ "	scanf(\"%i\", &x2);\n"+ "	...\n"+
+ * "	scanf(\"%i\", &xm);\n"+ "\n"+ "	if(x1 > 4)\n"+ "	{\n"+ "		x1 = x1 -1\n"+
+ * "	}\n"+ " .....\n"+ "	printf(\"%d\", xi);\n"+ "	Areturn 0;\n"+ "}");
+ */
