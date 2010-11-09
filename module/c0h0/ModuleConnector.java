@@ -23,6 +23,7 @@
 package org.jalgo.module.c0h0;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
@@ -43,6 +44,7 @@ import org.jalgo.main.gui.JAlgoGUIConnector;
 import org.jalgo.main.gui.components.JToolbarButton;
 import org.jalgo.main.util.Messages;
 import org.jalgo.module.c0h0.gui.Clickdummy;
+import org.jalgo.module.c0h0.gui.ToolbarAssistent;
 
 public class ModuleConnector extends AbstractModuleConnector {
 
@@ -55,42 +57,38 @@ public class ModuleConnector extends AbstractModuleConnector {
 				.getResourceURL("main", "ui.Logo")), SwingConstants.CENTER);
 		contentPane.add(helloJAlgo, BorderLayout.CENTER);
 
-		// hier alles rein
-		/** TODO ClickDummy ist keine Dauerloesung*/
-		Clickdummy dummy = new Clickdummy();
-		contentPane.add(dummy, BorderLayout.CENTER);
 
 		JMenu menu = JAlgoGUIConnector.getInstance().getModuleMenu(this);
 		JMenuItem item = new JMenuItem("a menu item");
 		menu.add(item);
 
 		
-		// Step buttons erzeugen
+		// Step buttons erzeugen 
 		JToolBar toolbar = JAlgoGUIConnector.getInstance().getModuleToolbar(
 				this);
-		JToolbarButton bigStepBack = new JToolbarButton(
-				new ImageIcon(Messages	.getResourceURL("main", "Icon.Undo_all")), "a tooltip", "");
-		JToolbarButton smallStepBack = new JToolbarButton(
-				new ImageIcon(Messages.getResourceURL("main", "Icon.Undo_blockstep")), "a tooltip", "");
-		JToolbarButton bigStepForward = new JToolbarButton(
-				new ImageIcon(Messages	.getResourceURL("main", "Icon.Perform_all")), "a tooltip", "");
-		JToolbarButton smallStepForward = new JToolbarButton(
-				new ImageIcon(Messages.getResourceURL("main", "Icon.Perform_blockstep")), "a tooltip", "");
-		JToolbarButton runButton = new JToolbarButton(
-				new ImageIcon(Messages.getResourceURL("main", "Icon.Finish_algorithm")), "a tooltip", "");
 		
-		// step buttons einfuegen
-		toolbar.add(bigStepBack);
-		toolbar.add(smallStepBack);
-		toolbar.add(smallStepForward);
-		toolbar.add(bigStepForward);
-		toolbar.add(runButton);
+		ToolbarAssistent.buildStepButtons(toolbar);
+		ToolbarAssistent.buildModeCombobox(toolbar);
+		
+		// hier alles rein
+		/** TODO ClickDummy ist keine Dauerloesung*/
+		Clickdummy dummy = new Clickdummy();
+		contentPane.add(dummy, BorderLayout.CENTER);
 
-		// ViewMode Combobox
-		JComboBox viewModeBox= new JComboBox(new Object []{"C0 - FlowChart","FlowChart - H0", "C0 - H0"});
-		toolbar.add(viewModeBox);
+
 	}
 
+	public void actionPerformed(ActionEvent e){
+		if ("smallStepForward".equals(e.getActionCommand())){
+			
+			System.out.println("blub");
+		}
+	}
+	
+	
+	
+	
+	
 	@Override
 	public void run() {
 		System.out.println("C0H0 Module is running");
