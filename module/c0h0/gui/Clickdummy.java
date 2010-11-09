@@ -51,7 +51,6 @@ public class Clickdummy extends JPanel {
 
 		// 7\ labels
 		JLabel l = new JLabel("editor");
-		JLabel r = new JLabel("right");
 		JLabel b = new JLabel("bottom");
 		bottom.add(b);
 		left.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));

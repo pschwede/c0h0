@@ -4,9 +4,12 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
 import com.mxgraph.swing.mxGraphComponent;
+import com.mxgraph.util.mxRectangle;
 import com.mxgraph.view.mxGraph;
 
 public class FlowChartView extends View {
@@ -14,22 +17,41 @@ public class FlowChartView extends View {
 	 * Eclipse is my friend (sometimes).
 	 */
 	private static final long serialVersionUID = 1993191423448829250L;
-	private mxGraphComponent graphComponent;
-	private void flowChartZoomInAction(ActionEvent e) {
-		graphComponent.zoomIn();
-	};
-	private void flowChartZoomOutAction(ActionEvent e) {
-		graphComponent.zoomOut();
-	};
+	
+	protected JButton fcViewButtonZoomIn;
+	protected JButton fcViewButtonZoomOut;
+	
+	public mxGraphComponent graphComponent;
+	private EventHandler eventHandler;
+	
 	public FlowChartView() {
+		
+		JPanel completeFlowChartView = new JPanel();
+		completeFlowChartView.setLayout(new BoxLayout(completeFlowChartView, BoxLayout.Y_AXIS));
+		JPanel navigateFlowChart = new JPanel();
+		navigateFlowChart.setLayout(new BoxLayout(navigateFlowChart, BoxLayout.X_AXIS));
+
+		fcViewButtonZoomIn = new JButton("+");
+		fcViewButtonZoomOut = new JButton("-");
+
+		eventHandler = new EventHandler();
+
 		mxGraph flowChartGraph = new mxGraph();
+		JButton fcViewButtonZoomIn = new JButton("+");
+		fcViewButtonZoomIn.addActionListener(eventHandler);
+		JButton fcViewButtonZoomOut = new JButton("-");
+		fcViewButtonZoomOut.addActionListener(eventHandler);
+		mxRectangle minimumSize = new mxRectangle();
+		minimumSize.setWidth(520);
+		minimumSize.setHeight(420);
+		
 		Object parent = flowChartGraph.getDefaultParent();
 		flowChartGraph.getModel().beginUpdate();
 		
 		try {
 			Object v1 = flowChartGraph.insertVertex(parent, null,
-					"<b>Hello</b>", 20, 20, 80, 30, "ROUNDED");
-			Object v2 = flowChartGraph.insertVertex(parent, null, "World!", 20,
+					"if ( x1  > 0 )", 20, 20, 80, 30, "ROUNDED");
+			Object v2 = flowChartGraph.insertVertex(parent, null, "x1 = x1 + 1;", 20,
 					150, 80, 30, "ROUNDED");
 			Object v3 = flowChartGraph.insertVertex(parent, null, null, 150, 35,
 					0, 0);
@@ -39,33 +61,34 @@ public class FlowChartView extends View {
 			flowChartGraph.insertEdge(parent, null, null, v2, v4);
 			flowChartGraph.insertEdge(parent, null, "else", v4, v3);
 			flowChartGraph.insertEdge(parent, null, null, v3, v1);
+			flowChartGraph.setMinimumGraphSize(minimumSize);
 		} finally {
 			flowChartGraph.getModel().endUpdate();
 		}
 
-		mxGraphComponent graphComponent = new mxGraphComponent(flowChartGraph);
+		graphComponent = new mxGraphComponent(flowChartGraph);
 		graphComponent.setDragEnabled(false);
 		graphComponent.setSize(500, 500);
 		graphComponent.setMinimumSize(new Dimension());
 		graphComponent.setEnabled(true);
-		this.add(graphComponent);
+		graphComponent.setZoomFactor(1.3);
 		
-		JButton zoomIn = new JButton("+");
-		
-		JButton zoomOut = new JButton("-");
-		
-		zoomIn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				flowChartZoomInAction(e);
+		navigateFlowChart.add(fcViewButtonZoomIn);
+		navigateFlowChart.add(fcViewButtonZoomOut);
+		completeFlowChartView.add(graphComponent);
+		completeFlowChartView.add(navigateFlowChart);
+		this.add(completeFlowChartView);
+	}
+
+	public class EventHandler implements ActionListener {
+		public void actionPerformed(ActionEvent event) {
+			if (((JButton) event.getSource()).getText().equals("+") ) {
+				graphComponent.zoomIn();
 			}
-		});
-		zoomOut.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				flowChartZoomOutAction(e);
+			if (((JButton) event.getSource()).getText().equals("-") ) {
+				graphComponent.zoomOut();
 			}
-		});
-		this.add(zoomIn);
-		this.add(zoomOut);
+		}
 	}
 
 }
