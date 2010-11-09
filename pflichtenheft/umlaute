@@ -1,0 +1,23 @@
+﻿#!/usr/bin/bash
+
+find . -iname '*.tex' | while read file;
+do
+  if [[ "$file" != *flichtenheft* ]]; then
+    echo "Checking $file"
+    sed -i "s/ä/\"a/g" $file
+    sed -i "s/Ä/\"A/g" $file
+    sed -i "s/ö/\"o/g" $file
+    sed -i "s/Ö/\"O/g" $file
+    sed -i "s/ü/\"u/g" $file
+    sed -i "s/Ü/\"U/g" $file
+    sed -i "s/ß/\"s/g" $file
+    sed -i "s/C0/\$C_0\$/g" $file
+    sed -i "s/H0/\$H_0\$/g" $file
+    sed -i "s/TabletPC/Tablet-PC/gi" $file
+    sed -i "s/Flowchart/Flussdiagramm/gi" $file
+    sed -i "s/Ablaufdiagramm/Flussdiagramm/gi" $file
+    sed -i "s/aumorientierter/aumstrukturierter/gi" $file
+  else
+    echo "Ignoring $file"
+  fi
+done
