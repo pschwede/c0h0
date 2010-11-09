@@ -1,5 +1,8 @@
 package org.jalgo.module.c0h0.gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JToolBar;
@@ -7,9 +10,13 @@ import javax.swing.JToolBar;
 import org.jalgo.main.gui.JAlgoGUIConnector;
 import org.jalgo.main.gui.components.JToolbarButton;
 import org.jalgo.main.util.Messages;
+import org.jalgo.module.c0h0.views.C0View;
 
-public class ToolbarAssistent {
-	public static void buildStepButtons(JToolBar toolbar) {
+public class ToolbarAssistent implements ActionListener{
+	
+	public C0View c0View;
+	
+	public void buildStepButtons(JToolBar toolbar) {
 
 		JToolbarButton bigStepBack = new JToolbarButton(
 				new ImageIcon(Messages	.getResourceURL("main", "Icon.Undo_all")), "a tooltip", "");
@@ -26,13 +33,25 @@ public class ToolbarAssistent {
 		// step buttons einfuegen
 		toolbar.add(bigStepBack);
 		toolbar.add(smallStepBack);
+		
 		toolbar.add(smallStepForward);
 		toolbar.add(bigStepForward);
+		
 		toolbar.add(runButton);
+		
+		bigStepForward.addActionListener(this);
+		bigStepForward.setActionCommand("bigstepfor");
 	
 	}
-	public static void buildModeCombobox(JToolBar toolbar){
+	public void buildModeCombobox(JToolBar toolbar){
 		JComboBox viewModeBox= new JComboBox(new Object []{"C0 - FlowChart","FlowChart - H0", "C0 - H0"});
 		toolbar.add(viewModeBox);
+	}
+	public void actionPerformed(ActionEvent e) {
+		 if ("bigstepfor".equals(e.getActionCommand())) {
+			 c0View.highlightNext();
+			 c0View.render();
+		 }
+	
 	}
 }

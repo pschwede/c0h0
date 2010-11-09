@@ -24,6 +24,7 @@ package org.jalgo.module.c0h0;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
@@ -45,8 +46,10 @@ import org.jalgo.main.gui.components.JToolbarButton;
 import org.jalgo.main.util.Messages;
 import org.jalgo.module.c0h0.gui.Clickdummy;
 import org.jalgo.module.c0h0.gui.ToolbarAssistent;
+import org.jalgo.module.c0h0.views.C0View;
 
-public class ModuleConnector extends AbstractModuleConnector {
+// TODO Actionlistener woanders unterbringe
+public class ModuleConnector extends AbstractModuleConnector implements ActionListener{
 
 	@Override
 	public void init() {
@@ -57,38 +60,33 @@ public class ModuleConnector extends AbstractModuleConnector {
 				.getResourceURL("main", "ui.Logo")), SwingConstants.CENTER);
 		contentPane.add(helloJAlgo, BorderLayout.CENTER);
 
-
 		JMenu menu = JAlgoGUIConnector.getInstance().getModuleMenu(this);
 		JMenuItem item = new JMenuItem("a menu item");
 		menu.add(item);
 
-		
-		// Step buttons erzeugen 
+		// Step buttons erzeugen
 		JToolBar toolbar = JAlgoGUIConnector.getInstance().getModuleToolbar(
 				this);
-		
-		ToolbarAssistent.buildStepButtons(toolbar);
-		ToolbarAssistent.buildModeCombobox(toolbar);
-		
+		ToolbarAssistent toolbarAssistent = new ToolbarAssistent();
+		toolbarAssistent.buildStepButtons(toolbar);
+		toolbarAssistent.buildModeCombobox(toolbar);
+
 		// hier alles rein
-		/** TODO ClickDummy ist keine Dauerloesung*/
+		/** TODO ClickDummy ist keine Dauerloesung */
 		Clickdummy dummy = new Clickdummy();
 		contentPane.add(dummy, BorderLayout.CENTER);
-
+		
+		// TODO das ist auch keine schöne Lösung
+		toolbarAssistent.c0View = dummy.c0view;
 
 	}
 
-	public void actionPerformed(ActionEvent e){
-		if ("smallStepForward".equals(e.getActionCommand())){
-			
+	public void actionPerformed(ActionEvent e) {
+		if ("smallStepForward".equals(e.getActionCommand())) {
 			System.out.println("blub");
 		}
 	}
-	
-	
-	
-	
-	
+
 	@Override
 	public void run() {
 		System.out.println("C0H0 Module is running");

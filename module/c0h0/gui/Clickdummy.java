@@ -33,16 +33,17 @@ public class Clickdummy extends JPanel {
 	JSplitPane topbottom;
 	JPanel bottom;
 	JEditorPane c0edit;
+	public C0View c0view;
 
 	public Clickdummy() {
 
-		C0View c0view = new C0View(c0edit);
+		c0view = new C0View(c0edit);
 		
 		// panels
 		left = new JPanel();
 		right = new JPanel();
 		bottom = new JPanel();
-		c0edit = new JEditorPane("text/html",c0view.plainText());
+		c0edit = new JEditorPane("text/html",c0view.highliteText());
 		c0edit.setSize(500, 500);
 		leftscroll = new JScrollPane(c0edit);
 		//c0edit.setEditorKit(new Numbered)

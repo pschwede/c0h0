@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class C0CodeModel {
 	public LinkedList<String> code;
-	private int highlightLine = 6;
+	public int highlightLine = 6;
 
 	public C0CodeModel() {
 		insertCode();
@@ -12,6 +12,17 @@ public class C0CodeModel {
 	}
 
 	public String plainText() {
+		String line, result = "";
+		for (int i = 0; i < code.size(); i++) {
+			line = code.get(i);
+			result = result.concat(line);
+				result = result.concat("<br />\n");
+		}
+		System.out.println(result);
+		return result;
+	}
+
+	public String highliteText() {
 		String line, result = "";
 		for (int i = 0; i < code.size(); i++) {
 			line = code.get(i);
