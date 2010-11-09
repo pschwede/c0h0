@@ -11,6 +11,7 @@ import java.io.Writer;
 import javax.swing.Action;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,6 +25,8 @@ import javax.swing.text.ViewFactory;
 
 import org.jalgo.module.c0h0.views.C0View;
 
+import com.mxgraph.swing.mxGraphComponent;
+import com.mxgraph.view.mxGraph;
 
 public class Clickdummy extends JPanel {
 	JPanel right;
@@ -54,14 +57,14 @@ public class Clickdummy extends JPanel {
 		JLabel l = new JLabel("editor");
 		JLabel r = new JLabel("right");
 		JLabel b = new JLabel("bottom");
-		right.add(r);
+		//right.add(r);
 		bottom.add(b);
 		left.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
 		left.setLayout(new BoxLayout(left, BoxLayout.Y_AXIS));
 		right.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
 		bottom.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
 
-		//eintilung ;)
+		//einteilung ;)
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		JSplitPane leftright = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
 				true, left, right);
@@ -75,7 +78,36 @@ public class Clickdummy extends JPanel {
 		left.add(leftscroll);
 		leftscroll.setPreferredSize(new Dimension());
 		c0edit.setMinimumSize(new Dimension());
+		
+		mxGraph flowChartView = new mxGraph();
+		Object parent = flowChartView.getDefaultParent();
 
+		flowChartView.getModel().beginUpdate();
+		try {
+			Object v1 = flowChartView.insertVertex(parent, null, "<b>Hello</b>", 20, 20, 80,
+					30, "ROUNDED");
+			Object v2 = flowChartView.insertVertex(parent, null, "World!", 20, 150, 80,
+					30, "ROUNDED");
+			Object v3 = flowChartView.insertVertex(parent, null, null, 150, 35, 0, 0);
+			Object v4 = flowChartView.insertVertex(parent, null, null, 150, 165, 0, 0);
+			flowChartView.insertEdge(parent, null, "then\nf111", v1, v2);
+			flowChartView.insertEdge(parent, null, null, v2, v4);
+			flowChartView.insertEdge(parent, null, "else", v4, v3);
+			flowChartView.insertEdge(parent, null, null, v3, v1);
+		} finally {
+			flowChartView.getModel().endUpdate();
+		}
+
+		mxGraphComponent graphComponent = new mxGraphComponent(flowChartView);
+		graphComponent.setDragEnabled(false);
+		graphComponent.setSize(500,500);
+		graphComponent.setMinimumSize(new Dimension());
+		graphComponent.setEnabled(true);
+		right.add(graphComponent);
+		JButton zoomIn = new JButton("+");
+		JButton zoomOut = new JButton("-");
+		right.add(zoomIn);
+		right.add(zoomOut);
 
 	}
 }
