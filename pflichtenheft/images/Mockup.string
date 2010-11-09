@@ -1,1 +1,0 @@
-int main()\n{\n\tint x1, x2, ... , xm;\n\tscanf(\"%i\", &x1);\n\tscanf(\"%i\", &x2);\n\t...\n\tscanf(\"%i\", &xm);\n \n\tif(x1 > 4)\n\t{\n\t\tx1 = x1 -1\n\t}\n .....\n\tprintf(\"%d\", xi);\n\tAreturn 0;\n}
